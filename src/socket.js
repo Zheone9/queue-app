@@ -3,7 +3,12 @@ import io from 'socket.io-client'
 let socket
 
 export const initSocket = () => {
-  socket = io('http://localhost:8080')
+  socket = io('http://localhost:8080', {
+    autoConnect: true,
+    reconnection: true,
+    reconnectionDelay: 1000,
+    reconnectionAttempts: 5
+  })
   return socket
 }
 
